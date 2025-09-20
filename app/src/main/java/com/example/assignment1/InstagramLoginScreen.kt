@@ -8,6 +8,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -31,43 +32,70 @@ fun InstagramLoginScreen(modifier: Modifier = Modifier) {
             painter = painter,
             contentDescription = "Instagram Logo",
             modifier = Modifier
-                .size(120.dp)
+                .height(80.dp)
                 .padding(bottom = 32.dp)
         )
 
         OutlinedTextField(
             value = emailState.value,
             onValueChange = { emailState.value = it },
-            label = { Text("Email") },
+            placeholder = { Text("Phone number, email or username") },
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(bottom = 16.dp)
+                .padding(bottom = 12.dp),
+            singleLine = true
         )
 
         OutlinedTextField(
             value = passwordState.value,
             onValueChange = { passwordState.value = it },
-            label = { Text("Password") },
+            placeholder = { Text("Password") },
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(bottom = 24.dp)
+                .padding(bottom = 16.dp),
+            singleLine = true,
+            visualTransformation = PasswordVisualTransformation()
         )
 
         Button(
             onClick = { },
             modifier = Modifier
                 .fillMaxWidth()
-                .height(50.dp),
-            shape = RoundedCornerShape(8.dp)
+                .height(45.dp),
+            shape = RoundedCornerShape(4.dp)
         ) {
-            Text("Login", fontSize = 18.sp)
+            Text("Log In", fontSize = 16.sp)
         }
 
+        Spacer(modifier = Modifier.height(12.dp))
+
         Text(
-            text = "Forgot password?",
-            modifier = Modifier.padding(top = 16.dp),
+            text = "Forgot your login details? Get help logging in.",
+            fontSize = 12.sp,
+            color = MaterialTheme.colorScheme.primary
+        )
+
+        Spacer(modifier = Modifier.height(24.dp))
+
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Divider(modifier = Modifier.weight(1f))
+            Text("  OR  ", fontSize = 12.sp)
+            Divider(modifier = Modifier.weight(1f))
+        }
+
+        Spacer(modifier = Modifier.height(24.dp))
+
+        Text(
+            text = "Log in with Facebook",
             fontSize = 14.sp,
             color = MaterialTheme.colorScheme.primary
+        )
+
+        Spacer(modifier = Modifier.height(48.dp))
+
+        Text(
+            text = "Don’t have an account? Sign up.",
+            fontSize = 14.sp
         )
     }
 }
