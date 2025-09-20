@@ -4,21 +4,17 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
 fun InstagramLoginScreen(modifier: Modifier = Modifier) {
-    val emailState = remember { mutableStateOf(TextFieldValue("")) }
-    val passwordState = remember { mutableStateOf(TextFieldValue("")) }
-
     val painter = painterResource(R.drawable.instagram_logo)
 
     Column(
@@ -37,8 +33,8 @@ fun InstagramLoginScreen(modifier: Modifier = Modifier) {
         )
 
         OutlinedTextField(
-            value = emailState.value,
-            onValueChange = { emailState.value = it },
+            value = "",
+            onValueChange = {},
             placeholder = { Text("Phone number, email or username") },
             modifier = Modifier
                 .fillMaxWidth()
@@ -47,8 +43,8 @@ fun InstagramLoginScreen(modifier: Modifier = Modifier) {
         )
 
         OutlinedTextField(
-            value = passwordState.value,
-            onValueChange = { passwordState.value = it },
+            value = "",
+            onValueChange = {},
             placeholder = { Text("Password") },
             modifier = Modifier
                 .fillMaxWidth()
@@ -92,7 +88,7 @@ fun InstagramLoginScreen(modifier: Modifier = Modifier) {
         )
 
         Spacer(modifier = Modifier.height(48.dp))
-
+        
         Text(
             text = "Don’t have an account? Sign up.",
             fontSize = 14.sp
